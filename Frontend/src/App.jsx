@@ -1,8 +1,11 @@
 import "./App.css";
-import Homepage from "./pages/Home.jsx";
 
 function App() {
-  return <Homepage />;
+  return (
+    <>
+      <div>Hello From home</div>
+    </>
+  );
 }
 
 export default App;
