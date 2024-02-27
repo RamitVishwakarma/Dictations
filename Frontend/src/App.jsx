@@ -2,14 +2,10 @@ import Navbar from "./components/Navbar";
 import image from "./assets/Images/Radial-Gradient.png";
 import { useState } from "react";
 import axios from "axios";
-import ReactAudioPlayer from "react-audio-player";
-import { saveAs } from "file-saver";
 
 export default function App() {
   const [text, setText] = useState("Hello World!");
   const [delay, setDelay] = useState();
-  const [audioUrl, setAudioUrl] = useState();
-
   const handleDelay = (e) => {
     setDelay(e.target.value);
   };
@@ -28,16 +24,15 @@ export default function App() {
       delay: Number(delay),
     };
     axios
-      .post(`${import.meta.env.VITE_BACKEND_URL}`, data)
+      .post(`${import.meta.env.VITE_BACKEND_URL}`, data, {
+        responseType: "blob",
+      })
       .then((res) => {
         const blob = new Blob([res.data], { type: "audio/mpeg" });
-        // const audioUrl = URL.createObjectURL(blob);
-        setAudioUrl(blob);
-        // saveAs(blob, "UserDetailsAndSubmissions.mp3");
+        const audioUrl = URL.createObjectURL(blob);
+        const audio = new Audio(audioUrl);
+        audio.play();
         console.log(res);
-      })
-      .catch(() => {
-        alert("Some error occured. Please try again later.");
       });
   };
 
@@ -70,9 +65,6 @@ export default function App() {
               </span>
             </button>
           </div>
-          {audioUrl ? (
-            <ReactAudioPlayer src={audioUrl} autoPlay controls />
-          ) : null}
         </div>
       </div>
     </>
