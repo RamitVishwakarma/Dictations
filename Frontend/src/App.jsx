@@ -11,7 +11,7 @@ export default function App() {
   };
 
   const handleText = (e) => {
-    setText(e.target.value);
+    setText(e.currentTarget.textContent);
   };
 
   const buttonClickHandler = () => {
@@ -20,9 +20,10 @@ export default function App() {
       return;
     }
     const data = {
-      text,
+      text: text,
       delay: Number(delay),
     };
+    console.log(data);
     axios
       .post(`${import.meta.env.VITE_BACKEND_URL}`, data, {
         responseType: "blob",
@@ -54,7 +55,7 @@ export default function App() {
             <div
               className="text-4xl custom-scrollbar text-green font-gugi z-10 min-w-[50vw] rounded-xl p-2 min-h-[50vh] max-w-[60vw] max-h-[55vh] outline-none hover:outline hover:outline-green focus:outline focus:outline-green shadow-2xl overflow-y-scroll"
               contentEditable="true"
-              onChange={handleText}>
+              onInput={handleText}>
               {text}
             </div>
             <button
