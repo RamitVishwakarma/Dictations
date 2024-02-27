@@ -33,10 +33,10 @@ export default function App() {
         const blob = new Blob([res.data], { type: "audio/mpeg" });
         // const audioUrl = URL.createObjectURL(blob);
         setAudioUrl(blob);
-        saveAs(blob, "UserDetailsAndSubmissions.mp3");
+        // saveAs(blob, "UserDetailsAndSubmissions.mp3");
         console.log(res);
       })
-      .catch((err) => {
+      .catch(() => {
         alert("Some error occured. Please try again later.");
       });
   };

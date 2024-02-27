@@ -31,7 +31,7 @@ app.post("/", async (req, res) => {
       text: z.string(),
       delay: z.number(),
     });
-    console.log(schema.safeParse(req.body).success);
+    // console.log(schema.safeParse(req.body).success);
     if (!schema.safeParse(req.body).success) {
       return res.status(400).send("Invalid request body");
     } else {
@@ -57,7 +57,6 @@ app.post("/", async (req, res) => {
       const response = await pollyClient.send(command);
       //? Sending the audio stream as a response
       res.setHeader("Content-Type", response.ContentType);
-      res.setHeader("Content-Disposition", "attachment; filename=audio.mp3");
       response.AudioStream.pipe(res);
       res.status(200);
     }
