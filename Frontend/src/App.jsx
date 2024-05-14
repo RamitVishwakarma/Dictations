@@ -4,7 +4,14 @@ import { useState, useRef } from "react";
 import axios from "axios";
 
 export default function App() {
-  const text = "Enter your text here";
+  const text = `DELETE THIS and enter your text here.
+THIS website converts your TEXT to AUDIO. 
+The DELAY defines the time between each word in the audio file. 
+DELAY should be in milliseconds. 
+TEXT should be in English. 
+Once you are done with your text press the play button to listen to the audio.
+The maximum characters for one request is 5000.
+Made with ❤️ by @Ramit.`;
   const [delay, setDelay] = useState();
   const textRef = useRef(null);
   const handleDelay = (e) => {
@@ -56,6 +63,7 @@ export default function App() {
             />
             <div
               className="text-4xl custom-scrollbar text-green font-gugi z-10 min-w-[50vw] rounded-xl p-2 min-h-[50vh] max-w-[60vw] max-h-[55vh] outline-none hover:outline hover:outline-green focus:outline focus:outline-green shadow-2xl overflow-y-scroll"
+              style={{ whiteSpace: "pre-wrap" }}
               contentEditable="true"
               ref={textRef}>
               {text}
@@ -63,7 +71,7 @@ export default function App() {
             <button
               onClick={buttonClickHandler}
               className="flex items-center justify-center cursor-pointer z-10">
-              <span class="material-symbols-outlined text-6xl text-white outline outline-4 outline-white bg-green rounded-full p-2 ">
+              <span className="material-symbols-outlined text-6xl text-white outline outline-4 outline-white bg-green rounded-full p-2 ">
                 play_arrow
               </span>
             </button>
