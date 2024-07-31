@@ -7,11 +7,11 @@ export default function App() {
   const text = `DELETE THIS and enter your text here.
 THIS website converts your TEXT to AUDIO. 
 The DELAY defines the time between each word in the audio file. 
-DELAY should be in milliseconds. 
-TEXT should be in English. 
-Once you are done with your text press the play button to listen to the audio.
-The maximum characters for one request is 5000.
-Made with ❤️ by @Ramit.`;
+DELAY is in milliseconds. 
+TEXT is in English. 
+Once you finish your text press the play button to listen to the audio.
+The maximum number of characters for one request is 5000.
+Made with ❤️ by Ramit.`;
   const [delay, setDelay] = useState();
   const textRef = useRef(null);
   const handleDelay = (e) => {
