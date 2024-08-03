@@ -1,6 +1,6 @@
 import Navbar from "./components/Navbar";
 import image from "./assets/Images/Radial-Gradient.png";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import axios from "axios";
 
 export default function App() {
@@ -46,6 +46,9 @@ Made with ❤️ by Ramit.`;
         console.log(res);
       });
   };
+  useEffect(() => {
+    axios.get(`${import.meta.env.VITE_BACKEND_URL}`);
+  }, []);
 
   return (
     <>
