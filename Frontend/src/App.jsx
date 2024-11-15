@@ -4,7 +4,8 @@ import { useState, useRef, useEffect } from "react";
 import axios from "axios";
 
 export default function App() {
-  const text = `DELETE THIS and enter your text here.
+  const text = `Delete these texts and enter your text here.
+  Info about the site:
 THIS website converts your TEXT to AUDIO. 
 The DELAY defines the time between each word in the audio file. 
 DELAY is in milliseconds. 
@@ -33,7 +34,7 @@ Made with ❤️ by Ramit.`;
       text: text,
       delay: Number(delay),
     };
-    console.log(data);
+    // console.log(data);
     axios
       .post(`${import.meta.env.VITE_BACKEND_URL}`, data, {
         responseType: "blob",
@@ -43,7 +44,7 @@ Made with ❤️ by Ramit.`;
         const audioUrl = URL.createObjectURL(blob);
         const audio = new Audio(audioUrl);
         audio.play();
-        console.log(res);
+        // console.log(res);
       });
   };
   useEffect(() => {
