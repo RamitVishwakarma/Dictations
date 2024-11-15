@@ -12,6 +12,7 @@ DELAY is in milliseconds.
 TEXT is in English. 
 Once you finish your text press the play button to listen to the audio.
 The maximum number of characters for one request is 5000.
+Please wait a little bit for the audio to be generated after sending the request.
 Made with ❤️ by Ramit.`;
   const [delay, setDelay] = useState();
   const textRef = useRef(null);
@@ -21,7 +22,7 @@ Made with ❤️ by Ramit.`;
 
   const buttonClickHandler = () => {
     const text = textRef.current.innerText;
-    console.log(text);
+    // console.log(text);
     if (!text) {
       alert("Please enter some text");
       return;
