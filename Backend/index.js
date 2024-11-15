@@ -37,10 +37,11 @@ app.post("/", async (req, res) => {
     } else {
       const delayBetweenWords = req.body.delay;
       //? Splitting the text into words and then adding a time delay between words using SSML
+      if (delayBetweenWords < 0)
+        return res.status(400).send("Delay should be greater than 0");
       const text = req.body.text
         .split(" ")
         .join(`<break time="${delayBetweenWords}ms"/>"`);
-
       const pollyText = `<speak>${text}</speak>`;
       //? the input object for the SynthesizeSpeechCommand
       const input = {
